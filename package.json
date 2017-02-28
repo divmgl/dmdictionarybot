@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "dashbot": "^0.8.4",
+    "node-telegram-bot-api": "^0.27.0",
+    "superagent": "^3.5.0",
+    "superagent-prefix": "0.0.2",
+    "superagent-promise": "^1.1.0",
+    "superagent-use": "^0.1.0",
+    "winston": "^2.3.1"
+  },
+  "scripts": {
+    "build": "`npm bin`/babel src -d lib",
+    "start": "node lib/index.js",
+    "dev": "`npm bin`/nodemon --exec ./start.sh --ignore lib"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.23.0",
+    "nodemon": "^1.11.0"
+  }
+}
