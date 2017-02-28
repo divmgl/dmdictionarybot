@@ -49,9 +49,12 @@ function sendDefinition({ chat: { id, username, title } }, [text, match]) {
                 return
             }
 
-            const definition = results[0].senses[0].definition[0]
+            const definitions = results
+                .filter(({ senses: [{ definition }] }) => definition)
+                .map(({ senses: [{ definition }] }, index) => `${index + 1}. ${definition}`)
+                .reduce((a, b) => `${a}\n${b}`)
 
-            sendMessage(id, `Here's the definition I found for *${ keyword }*.\n\n${ definition }`, name)
+            sendMessage(id, `Here are the definitions I found for *${ keyword }*.\n\n${ definitions }`, name)
             sessions[id] = undefined
         })
         .catch((err) => {
